@@ -37,7 +37,7 @@ Properties props = new Properties();
  props.setProperty("mail.smtp.socketFactory.fallback", "false");
  props.setProperty("mail.smtp.port", "587");//465
  props.setProperty("mail.smtp.socketFactory.port", "587");
-   props.put("mail.transport.protocol", "smtp");
+  // props.put("mail.transport.protocol", "smtp");
  //get Session   
   session = Session.getInstance(props,    
   new javax.mail.Authenticator() {    

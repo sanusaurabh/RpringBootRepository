@@ -35,9 +35,9 @@ Properties props = new Properties();
  props.put("mail.smtp.EnableSSL.enable", "true");
  props.setProperty("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
  props.setProperty("mail.smtp.socketFactory.fallback", "false");
- props.setProperty("mail.smtp.port", "465");//465
- props.setProperty("mail.smtp.socketFactory.port", "465");
-// props.put("mail.transport.protocol", "smtp");
+ props.setProperty("mail.smtp.port", "587");//465
+ props.setProperty("mail.smtp.socketFactory.port", "587");
+ props.put("mail.transport.protocol", "smtp");
  //get Session   
   session = Session.getInstance(props,    
   new javax.mail.Authenticator() {    

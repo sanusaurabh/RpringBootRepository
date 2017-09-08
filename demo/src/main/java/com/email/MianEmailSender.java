@@ -50,7 +50,7 @@ public class MianEmailSender {
 
 	    			}
 	    			
-	    		System.out.println("***************************************"+sensderemailId);
+	    		//System.out.println("***************************************"+sensderemailId);
 	    	}
 	    	
 	    	 
@@ -74,7 +74,7 @@ public class MianEmailSender {
 				 String keydomainName =entery.getKey();
 				 String valuedomainName= entery.getValue();
 				 //subject=subject+" "+keydomainName;
-				 System.out.println(keydomainName +"88888888888 "+keydomainName);
+				// System.out.println(keydomainName +"88888888888 "+keydomainName);
 				 String newsubject = subject.replace("domainUrl",keydomainName);
 			//}
 			//for(String domainName :emailIdList){
@@ -86,8 +86,8 @@ public class MianEmailSender {
 				else{
 			  String template = EmailTemplate.createtemplate(keydomainName, sensderpaswodandNmae.getSendername(), htmlemailtemplatefile,object);
 			 // Mailer.send("neva.webdeveloper@gmail.com","shfpen4ui9",valuedomainName,newsubject,template);
-			  System.out.println(sensderpaswodandNmae.getEmailId() +"  "+sensderpaswodandNmae.getPassword() +"  "+valuedomainName +" " +newsubject);
-			  System.out.println(template);
+			  //System.out.println(sensderpaswodandNmae.getEmailId() +"  "+sensderpaswodandNmae.getPassword() +"  "+valuedomainName +" " +newsubject);
+			 // System.out.println(template);
 			  Mailer mailer = new Mailer();
 			  checkErrorCouldnotConnectAndSendmail(sensderpaswodandNmae, valuedomainName, newsubject, template, mailer);
 			  mailer=null;

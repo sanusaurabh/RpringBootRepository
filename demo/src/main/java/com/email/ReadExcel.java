@@ -97,7 +97,7 @@ public class ReadExcel {
         if(!emailId.isEmpty()&& !password.isEmpty() && !senderName.isEmpty() )
          emaildnadPwd.put(emailId, new EmailandPassword(emailId,password,senderName));
          
-        System.out.println("Email id " +emailId +"and Password "+password);
+      //  System.out.println("Email id " +emailId +"and Password "+password);
     }
    }
 
@@ -135,7 +135,7 @@ public class ReadExcel {
             }
             
         }
-        System.out.println("domain  "+domainName +"    domain url  "+domainUrl);
+       // System.out.println("domain  "+domainName +"    domain url  "+domainUrl);
         sendernameList1.put(domainName, domainUrl);
     }
    }

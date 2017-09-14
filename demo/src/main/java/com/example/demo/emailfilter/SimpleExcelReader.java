@@ -5,6 +5,8 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -25,14 +27,14 @@ public class SimpleExcelReader {
 
 	 
 		 
-		public static void main(String args[]) throws FileNotFoundException, IOException {
-	       // System.out.println("Reading from CSV file using BufferedReader and String Split");
-	      //  List nations = readCSV();
-	      //  System.out.print(nations);
-	        System.out.println("Parsing CSV file using CSVParser of Apache commons CSV");
-	        parseCSV();
-
-	    }
+//		public static void main(String args[]) throws FileNotFoundException, IOException {
+//	       // System.out.println("Reading from CSV file using BufferedReader and String Split");
+//	      //  List nations = readCSV();
+//	      //  System.out.print(nations);
+//	        System.out.println("Parsing CSV file using CSVParser of Apache commons CSV");
+//	      //  parseCSV();
+//
+//	    }
 
 		/*
 	     * Java program to read CVS file using BufferedReader and String split()
@@ -64,9 +66,11 @@ public class SimpleExcelReader {
 		/*
 	     * Method to read CSV file using CSVParser from Apache Commons CSV
 	     */
-	    public static void parseCSV() throws FileNotFoundException, IOException {
-	        CSVParser parser = new CSVParser(new FileReader("C:\\Users\\HP\\Desktop\\merg.csv"), CSVFormat.DEFAULT.withHeader());
-             Set<String> list = new HashSet<String>();
+	    public static void parseCSV(InputStream inputStream, String filepath) throws FileNotFoundException, IOException {
+	        //CSVParser parser = new CSVParser(new FileReader("C:\\Users\\HP\\Desktop\\merg.csv"), CSVFormat.DEFAULT.withHeader());
+	    	BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
+	        CSVParser parser = new CSVParser(reader, CSVFormat.DEFAULT.withHeader());
+	        Set<String> list = new HashSet<String>();
 	        for (CSVRecord record : parser) {
 	        	System.out.println();
 	        	try {
@@ -80,7 +84,8 @@ public class SimpleExcelReader {
 	        }
 	        parser.close();
 	        
-	        writeCsvFile("C:\\Users\\HP\\Desktop\\domain1.csv",list);
+	        //writeCsvFile("C:\\Users\\HP\\Desktop\\domain1.csv",list);
+	        writeCsvFile(filepath,list);
 	        
 	    }
 

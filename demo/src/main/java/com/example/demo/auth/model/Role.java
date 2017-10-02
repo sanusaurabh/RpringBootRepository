@@ -11,6 +11,7 @@ public class Role {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name="role_id")
     public Long getId() {
         return id;
     }

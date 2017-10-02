@@ -68,6 +68,7 @@ public class CsvFileUploadAndDownloadforFilter {
 		      }
 		      outStream.flush();
 		      inStrem.close();
+		      file.deleteOnExit();
 		   
 			// InputStream templatestream = list.get(0);
 		} else {

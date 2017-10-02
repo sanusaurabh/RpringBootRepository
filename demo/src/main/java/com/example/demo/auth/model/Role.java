@@ -8,9 +8,9 @@ import java.util.Set;
 public class Role {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "role_id")
+	@Column(name = "roleid")
 	private Long id;
-	@Column(name = "role_name")
+	@Column(name = "rolename")
 	private String name;
 	@ManyToMany(mappedBy = "roles")
 	private Set<User> users;

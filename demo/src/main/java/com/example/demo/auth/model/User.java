@@ -20,14 +20,14 @@ public class User {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "user_id")
 	private Long id;
-	@Column(name = "user_name")
+	@Column(name = "username")
 	private String username;
-	@Column(name = "user_password")
+	@Column(name = "userpassword")
 	private String password;
-	@Column(name = "user_passwordconform")
+	@Column(name = "userpasswordconform")
 	private String passwordConfirm;
 	@ManyToMany
-	@JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
+	@JoinTable(name = "userrole", joinColumns = @JoinColumn(name = "userid"), inverseJoinColumns = @JoinColumn(name = "roleid"))
 	private Set<Role> roles;
 
 	public Long getId() {
@@ -63,8 +63,6 @@ public class User {
 		this.passwordConfirm = passwordConfirm;
 	}
 
-	@ManyToMany
-	@JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
 	public Set<Role> getRoles() {
 		return roles;
 	}

@@ -28,12 +28,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
     	http.csrf().disable(); 
-    	http.sessionManagement()
-        .maximumSessions(1)
-        .maxSessionsPreventsLogin(true);
-    	http.sessionManagement()
-    	  .invalidSessionUrl("/invalidSession");
-    	
         http
                 .authorizeRequests()
 				.antMatchers("/resources/**", "/registration", "/favicon.ico").permitAll()
@@ -45,6 +39,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                     .and()
                 .logout()
                     .permitAll();
+        http.sessionManagement()
+        .maximumSessions(1)
+        .maxSessionsPreventsLogin(true);
+    	http.sessionManagement()
+    	  .invalidSessionUrl("/invalidSession");
         
     }
 
@@ -58,13 +57,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     public AuthenticationManager authenticationManagerBean() throws Exception {
         return super.authenticationManagerBean();
     }
-//    @Bean
-//    public static ServletListenerRegistrationBean httpSessionEventPublisher() {
-//        return new ServletListenerRegistrationBean(new HttpSessionEventPublisher());
-//    }
-    
     @Bean
-    public HttpSessionEventPublisher httpSessionEventPublisher() {
-        return new HttpSessionEventPublisher();
+    public static ServletListenerRegistrationBean httpSessionEventPublisher() {
+        return new ServletListenerRegistrationBean(new HttpSessionEventPublisher());
     }
+    
+//    @Bean
+//    public HttpSessionEventPublisher httpSessionEventPublisher() {
+//        return new HttpSessionEventPublisher();
+//    }
 }

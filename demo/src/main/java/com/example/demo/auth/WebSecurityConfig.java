@@ -1,6 +1,7 @@
 package com.example.demo.auth;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.web.servlet.ServletListenerRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -11,6 +12,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.web.session.HttpSessionEventPublisher;
 
 @Configuration
 @EnableWebSecurity
@@ -26,6 +28,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
     	http.csrf().disable(); 
+    	http.sessionManagement()
+        .maximumSessions(1)
+        .maxSessionsPreventsLogin(true);
+    	http.sessionManagement()
+    	  .invalidSessionUrl("/invalidSession");
+    	
         http
                 .authorizeRequests()
 				.antMatchers("/resources/**", "/registration", "/favicon.ico").permitAll()
@@ -49,5 +57,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     public AuthenticationManager authenticationManagerBean() throws Exception {
         return super.authenticationManagerBean();
+    }
+//    @Bean
+//    public static ServletListenerRegistrationBean httpSessionEventPublisher() {
+//        return new ServletListenerRegistrationBean(new HttpSessionEventPublisher());
+//    }
+    
+    @Bean
+    public HttpSessionEventPublisher httpSessionEventPublisher() {
+        return new HttpSessionEventPublisher();
     }
 }

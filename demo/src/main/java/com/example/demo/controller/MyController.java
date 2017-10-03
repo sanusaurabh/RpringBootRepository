@@ -9,5 +9,9 @@ public class MyController {
 	public ModelAndView getwelcome(){
 		return new ModelAndView("welcome");
 	}
+	@RequestMapping("/invalidSession")
+	public ModelAndView getinvalidSession(){
+		return new ModelAndView("invalidSession");
+	}
 
 }
